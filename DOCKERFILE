@@ -1,0 +1,16 @@
+FROM node:8
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# copy everything into the repository
+COPY . .
+
+#install dependencies
+RUN npm install
+
+# build project --> copy everything into dist folder
+RUN npm build 
+
+EXPOSE 3333
+CMD [ "npm", "run", "server" ]
